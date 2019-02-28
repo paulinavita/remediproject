@@ -1,63 +1,74 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Check Penyakit</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-            div {
-                background: pink;
-                display: inline;
-                border: 1px;
-            }
-    </style>
-</head>
-<body>
-        ENTER YOUR SYMPTOMS
-    <div class = "detail-left">
-    <form method="POST" action="/check">
-            <input type="text" value="<%= user.lastName%>" disabled><br>
-             <input type="text" value="<%= user.gender%>" disabled><br>
-             <input type="text" value="<%= user.birthday%>" disabled><br>
-             <select name ="symptoms[]" id="symptoms">
-                    <% symptomList.forEach(element => { %>
-                        <option value="<%= element.dataValues.id %>"><%=  element.dataValues.name %></option>
-                     <% }) %>
-                        <option value="" selected>Pilih Keluhan</option>
-            </select><br>
-            <select name ="symptoms[]" id ="symptoms">
-                    <% symptomList.forEach(element => { %>
-                        <option value="<%= element.dataValues.id %>"><%=  element.dataValues.name %></option>
-                    <% }) %>
-                        <option value="" selected>Pilih Keluhan</option>
-            </select><br>
-            <select name ="symptoms[]" id ="symptoms">
-                    <% symptomList.forEach(element => { %>
-                        <option value="<%= element.dataValues.id %>"><%=  element.dataValues.name %></option>
-                    <% }) %>
-                        <option value="" selected>Pilih Keluhan</option>
-            </select>
-            <br>
-            <button type="submit">Masukkan Data</button>
-        </form>
-    </div>
+<html lang="en">
 
-    <div class = "detail-right">
-            <table border="1">
-                <tr>
-                    <th>Rx</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Diagnosis Pribadi</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Obat yang disarankan</td>
-                    <td></td>
-                </tr>
-            </table>
+<head>
+  <% include ../partials/headPage %>
+  <title>Medilab Free Bootstrap HTML5 Template</title>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+              <% include ../partials/header %>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+                <div class = "form-group">
+                    <h2 style="color:white">ENTER YOUR SYMPTOMS</h2><br>
+                    <hr>
+                  <form method="POST" action="/check">
+                      <input type="text" value="<%= user.lastName%>" disabled class="form-control"><br>
+                      <input type="text" value="<%= user.gender%>" disabled class="form-control"><br>
+                      <input type="text" value="<%= user.birthday%>" disabled class="form-control"><br><br>
+                      <label><h2 style="color:white">Masukan Keluhan Minimal 1 & Maksimal 3</h2></label><br><br>
+                      <select name ="symptoms[]" id="symptoms" class="form-control">
+                          <% symptomList.forEach(element => { %>
+                          <option value="<%= element.dataValues.id %>"><%=  element.dataValues.name %></option>
+                          <% }) %>
+                          <option value="" selected>Pilih Keluhan</option>
+                      </select><br>
+                      <select name ="symptoms[]" id ="symptoms" class="form-control">
+                          <% symptomList.forEach(element => { %>
+                          <option value="<%= element.dataValues.id %>"><%=  element.dataValues.name %></option>
+                          <% }) %>
+                          <option value="" selected>Pilih Keluhan</option>
+                      </select><br>
+                      <select name ="symptoms[]" id ="symptoms" class="form-control">
+                          <% symptomList.forEach(element => { %>
+                          <option value="<%= element.dataValues.id %>"><%=  element.dataValues.name %></option>
+                          <% }) %>
+                          <option value="" selected>Pilih Keluhan</option>
+                      </select>
+                      <br>
+                      <button type="submit" class="btn btn-danger">Masukkan Data</button>
+                  </form>
+              </div>
+
+            </div>
+            <div class="col-md-2"></div>
+
+
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+  <!--/ banner-->
+
+  <script src="/style/js/jquery.min.js"></script>
+  <script src="/style/js/jquery.easing.min.js"></script>
+  <script src="/style/js/bootstrap.min.js"></script>
+  <script src="/style/js/custom.js"></script>
+
 </body>
 </html>
