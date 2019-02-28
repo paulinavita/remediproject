@@ -5,43 +5,55 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     username: {
       type: DataTypes.STRING,
-      // validate: {
-      //   isUnique(value) {
-      //     return User.findOne({
-      //       where: {
-      //         username: value,
-      //         id: {[Op.ne]: this.id}
-      //       }
-      //     })
-      //     .then((data) => {
-      //       if(data !== null) {
-      //         throw new Error('Validation error: username is same')
-      //       }
-      //     })
-      //     .catch((err) => {
-      //       throw new Error(err)
-      //     })
-      //   }
-      // }
+      validate : {
+        unique(username) {
+          return User.findOne(
+            { where : { id : {[sequelize.Op.ne] : this.id}, username : username}})
+           .then ((one) => {
+             if (one !== null) {
+               throw new Error ('Duplicate Username')
+             }
+           })
+           .catch(err => {
+             throw err
+           })
+         }
+      }
     },
     password: DataTypes.STRING,
     gender: {
       type: DataTypes.ENUM,
       values: ['female', 'male']
     },
-    birthday: DataTypes.STRING,
+    birthday: DataTypes.DATE,
     email: {
       type: DataTypes.STRING,
-      validate: {
-        isEmail: {
-          args: true,
-          msg: 'Validation error: email is same'
+      validate : {
+        is :  /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i,
+        unique(email) {
+          return User.findOne(
+            { where : { id : {[sequelize.Op.ne] : this.id}, email : email}})
+           .then ((one) => {
+             if (one !== null) {
+               throw new Error ('Duplicate Email')
+             }
+           })
+           .catch(err => {
+             throw err })
+          }
         }
       }
-    }
-  }, {});
+    }, {
+      hooks : {
+        beforeCreate(User, options){
+          User.firstName = User.firstName[0].toUpperCase() + User.firstName.slice(1).toLowerCase()
+          User.lastName = User.lastName[0].toUpperCase() + User.lastName.slice(1).toLowerCase()
+          User.email = User.email.toLowerCase()
+        }
+      }
+    });
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsToMany(models.Symptom, {through : models.UserSymptom})
   };
   return User;
 };

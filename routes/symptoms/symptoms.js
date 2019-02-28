@@ -14,6 +14,22 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/showall' , (req, res) => {
+    Model.User.findOne( {
+        where : {id : 1},
+        include : [
+            {model : Model.Symptom}
+        ]
+    })
+    .then((datas) => {
+        // res.send(datas)
+        res.render('showall', {datas:datas})
+    })
+    .catch(err => {
+        res.send(err)
+    })
+})
+
 router.post('/', (req, res) =>{
     for (let i = 0; i < req.body.symptoms.length; i++) {
         let detail = {
@@ -23,14 +39,12 @@ router.post('/', (req, res) =>{
         Model.UserSymptom.create(detail)
         .then(() => {})
         .catch(err => {
+            res.send(err)
         }) 
     }
-    res.redirect('/showAll')
+    res.redirect('/check/showall')
 })
 
-// router.get('/showall' , (req, res) => {
-//     res.send('masuk')
-// })
 
 
 module.exports = router

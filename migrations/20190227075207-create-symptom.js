@@ -14,6 +14,18 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      drugId: {
+        type: Sequelize.INTEGER
+      },
+      drugName: {
+        type: Sequelize.STRING
+      },
+      price : {
+        type : Sequelize.INTEGER
+      },
+      brandName : {
+        type : Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

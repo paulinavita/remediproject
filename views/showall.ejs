@@ -7,21 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_m3M00uvXiRdDw1tioQZFz");
+   })();
+</script>
 </head>
 <body>
-    <h1> Resep dan Saran </h1>
+    <h1> <center> Resep dan Saran </h1></center>
 
-    <table>
-        <thead>Diagnosis Pribadi : </thead>
-        <tbody>
-            looping nama penyakit
-        </tbody>
-
-    </table>
-
+    <center>
     <table>
         <thead>Obat Yang Disarankan :</thead>
-        looping
+        <% for (let data of datas.Symptoms) {%>
+       <tr>
+
+            <td><%= data.brandName %></td>
+            <td><%= data.price %></td>
+            <td><%= data.name %></td>
+        </tr>
+        <% } %>
     </table>
+    </center>
 </body>
 </html>
