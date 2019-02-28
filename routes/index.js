@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const User = require('../models').User
-var session = require('express-session')
 
 router.get("/", (req, res) => {
   res.render('pages/user/register')
@@ -28,24 +27,19 @@ router.get("/", (req, res) => {
 router.get('/login', (req, res) => {
   res.render('pages/user/login')
 })
-.post('/login', (res, req) => {
+.post('/login', (req, res) => {
   User.findOne({
-    where: { 
-      email: req.body.email,
+    where: {
       username: req.body.username,
-      password: req.body.password
     }
   })
   .then((users) => {
-    if(users) {
-      res.send('has login')
-    } else {
-      User.create({
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
-      })
+    if(users.username == req.body.username && users.password == req.body.password) {
+      res.render('pages/main/main')
     }
+  })
+  .catch((err) => {
+    res.send(err)
   })
 })
 

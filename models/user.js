@@ -5,24 +5,24 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     username: {
       type: DataTypes.STRING,
-      validate: {
-        isUnique(value) {
-          return User.findOne({
-            where: {
-              username: value,
-              id: {[Op.ne]: this.id}
-            }
-          })
-          .then((data) => {
-            if(data !== null) {
-              throw new Error('Validation error: username is same')
-            }
-          })
-          .catch((err) => {
-            throw new Error(err)
-          })
-        }
-      }
+      // validate: {
+      //   isUnique(value) {
+      //     return User.findOne({
+      //       where: {
+      //         username: value,
+      //         id: {[Op.ne]: this.id}
+      //       }
+      //     })
+      //     .then((data) => {
+      //       if(data !== null) {
+      //         throw new Error('Validation error: username is same')
+      //       }
+      //     })
+      //     .catch((err) => {
+      //       throw new Error(err)
+      //     })
+      //   }
+      // }
     },
     password: DataTypes.STRING,
     gender: {
