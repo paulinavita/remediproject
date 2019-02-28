@@ -1,0 +1,77 @@
+[
+	{
+		"name": "Kelelahan",
+		"description": "desc",
+		"DrugId": "3"
+	},
+	{
+		"name": "Pusing/Demam",
+		"description": "desc",
+		"DrugId": "1"
+	},
+	{
+		"name": "Gatal",
+		"description": "desc",
+		"DrugId": "2"
+	},
+	{
+		"name": "Gampang letih",
+		"description": "desc",
+		"DrugId": "4"
+	},
+	{
+		"name": "Kulit memerah",
+		"description": "desc",
+		"DrugId": "6"
+	},
+	{
+		"name": "Perut perih",
+		"description": "desc",
+		"DrugId": "7"
+	},
+	{
+		"name": "Pegal",
+		"description": "desc",
+		"DrugId": "8"
+	},
+	{
+		"name": "Darah tinggi",
+		"description": "desc",
+		"DrugId": "11"
+	},
+	{
+		"name": "Radang",
+		"description": "desc",
+		"DrugId": "13"
+	},
+	{
+
+		"name": "Radang tenggorokan",
+		"description": "desc",
+		"DrugId": "15"
+	},
+	{
+		"id": "11",
+		"name": "Batuk kering",
+		"description": "desc",
+		"DrugId": "6"
+	},
+	{
+		"id": "12",
+		"name": "Batuk berdahak",
+		"description": "desc",
+		"DrugId": "5"
+	},
+	{
+		"id": "13",
+		"name": "Pilek",
+		"description": "desc",
+		"DrugId": "13"
+	},
+	{
+		"id": "14",
+		"name": "Sakit gigi",
+		"description": "desc",
+		"DrugId": "10"
+	}
+]
