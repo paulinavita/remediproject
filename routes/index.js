@@ -47,7 +47,8 @@ router.get('/login', (req, res) => {
     .compare(req.body.password, user.password)
     .then(doMatch => {
       if (doMatch) {
-        res.render('pages/main/main', {session :req.session})
+        res.redirect('/check')
+        // res.render('/check', {session :req.session})
       } else {
         res.send('gagal login')
       }
@@ -63,18 +64,14 @@ router.get('/login/add', (req, res) => {
   res.render('pages/user/add', {
     message : 'Dapat menambahkan penyakit dan medikasi disini'
   })
-  .catch((err) => {
-    res.send(err)
-  })
 })
 
 //POST PAGE
 router.post('/login/add', (req, res) => {
   let detail = {
-    symptomName : req.body.symptomName,
+    name : req.body.name,
     description : req.body.description,
     drugName : req.body.drugName,
-    drugId :req.body.symptomId,
     price : req.body.price,
     brandName : req.body.brandName,
   }
@@ -97,6 +94,76 @@ router.get('/login/list', (req, res) => {
   })
 })
 
+// POST PAGE
+router.post('/login/add' , (req,res) => {
+  let detail = {
+      name : req.body.name,
+      description : req.body.description,
+      price : req.body.price,
+      drugName : req.body.drugName,
+      brandName : req.body.brandName,
+      updatedAt : new Date()
+    }
+    Model.Symptom.create(detail)
+    .then(() => {
+      res.redirect('/login/list')
+    })
+    .catch(err => {
+      res.send(err)
+    })
+})
+
+
+//EDIT GET
+router.get('/login/edit/:id', (req, res) => {
+  let id = req.params.id
+  Model.Symptom.findByPk(id)
+  .then(data => {
+    res.render('pages/user/edit.ejs', {
+      data : data
+    })
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
+
+
+//EDIT POST
+router.post('/login/edit/:id', (req, res) => {
+  let id = req.params.id
+  Model.Symptom.findByPk(id)
+  .then((data) => {
+    data.name = req.body.name,
+    data.description = req.body.description,
+    data.drugId = data.id,
+    data.price = req.body.price,
+    data.drugName = req.body.drugName,
+    data.brandName = req.body.brandName
+    data.updatedAt = new Date()
+    return data.save()
+  })
+  .then(() => {
+    res.redirect('/login/list')
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
+
+
+//DELETE
+
+router.get('/login/delete/:id', (req, res) => {
+  let id = req.params.id
+  Model.Symptom.destroy({where : {id : id}})
+  .then(() => {
+    res.redirect('/login/list')
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
 
 
 

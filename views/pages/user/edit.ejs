@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+
+    <form method="POST">
+            Nama Gejala / Penyakit : <br>
+            <input type="text" name="symptomName" value="<%= data.name %>">
+            <br>
+            Deskripsi : <br>
+            <input type="text" name="description" value="<%= data.description %>">
+            <br>
+            Nama Medikasi : <br>
+            <input type="text" name="drugName" value="<%= data.drugName %>">
+            <br>
+            Harga di Pasaran : <br>
+            <input type="text" name="price" value="<%= data.price %>">
+            <br>
+            Brand / Generik : <br>
+            <input type="text" name="brandName" value="<%= data.brandName %>">
+            <br><br>
+            <button type ="submit"> Update Data </button>
+    </form>
+</body>
+</html>
