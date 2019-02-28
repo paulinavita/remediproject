@@ -3,7 +3,6 @@ const Model = require('../../models')
 
 router.get('/', (req, res) => {
     Model.Symptom.findAll()
-    
     .then(symptomList => {
         Model.User.findByPk(1)
         .then((user) => {
@@ -24,11 +23,14 @@ router.post('/', (req, res) =>{
         Model.UserSymptom.create(detail)
         .then(() => {})
         .catch(err => {
-            res.redirect('/user/?data=error')
         }) 
     }
-    res.redirect('/user/?data=showall')
+    res.redirect('/showAll')
 })
+
+// router.get('/showall' , (req, res) => {
+//     res.send('masuk')
+// })
 
 
 module.exports = router
