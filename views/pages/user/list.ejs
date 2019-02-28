@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
@@ -27,7 +28,7 @@
                     <td><%= data.drugName %></td>
                     <td><%= data.price %></td>
                     <td><%= data.brandName %></td>
-                    <td><a href="/students/edit/<%= data.id %>">Edit</a> | <a href="/students/delete/<%= data.id %>" onclick="return confirm('Are you sure to delete <%= data.name %>?')">Delete</a> </td>
+                    <td><a href="/login/edit/<%= data.id %>">Edit</a> | <a href="/login/delete/<%= data.id %>" onclick="return confirm('Are you sure to delete <%= data.name %>?')">Delete</a> </td>
                 </tr>
                 <% } %>
         </tbody>

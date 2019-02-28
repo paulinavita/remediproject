@@ -4,7 +4,7 @@ const routes = require("./routes")
 const routesDrugs = require("./routes/drugs/drugs")
 const session = require('express-session')
 const routesSymptoms = require("./routes/symptoms/symptoms")
-const port = 3000
+const port = process.env.PORT ||3000
 app.use(session({secret : 'remidi'}))
 
 
