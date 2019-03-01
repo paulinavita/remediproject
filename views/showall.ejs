@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Your Simple Prescription</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init("user_m3M00uvXiRdDw1tioQZFz");
-   })();
-</script>
+  <% include partials/headPage %>
+  <title></title>
 </head>
-<body>
-    <h1> <center> Resep dan Saran </h1></center>
 
-    <center>
-    <table>
-        <thead>Obat Yang Disarankan :</thead>
-        <% for (let data of datas.Symptoms) {%>
-       <tr>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+              <% include partials/header %>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
 
-            <td><%= data.brandName %></td>
-            <td><%= data.price %></td>
-            <td><%= data.name %></td>
-        </tr>
-        <% } %>
-    </table>
-    </center>
+                    <h1> <center> Resep dan Saran </h1></center>
+
+                    <center>
+                    <table>
+                        <thead>Obat Yang Disarankan :</thead>
+                        <% for (let data of datas.Symptoms) {%>
+                       <tr>
+                
+                            <td><%= data.brandName %></td>
+                            <td><%= data.price %></td>
+                            <td><%= data.name %></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                    </center>
+            </div>
+            <div class="col-md-2"></div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ banner-->
+
+  <script src="/style/js/jquery.min.js"></script>
+  <script src="/style/js/jquery.easing.min.js"></script>
+  <script src="/style/js/bootstrap.min.js"></script>
+  <script src="/style/js/custom.js"></script>
+
 </body>
 </html>

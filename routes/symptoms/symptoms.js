@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Model = require('../../models')
+const nodemailer = require('nodemailer')
 
 router.get('/', (req, res) => {
     Model.Symptom.findAll()

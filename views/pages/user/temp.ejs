@@ -1,43 +1,50 @@
-"use strict";
-const nodemailer = require("nodemailer");
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: 'aswkyrakatja@gmail.com',
+      pass: 'jawakota26'
+  }
+});
 
-async..await is not allowed in global scope, must use a wrapper
-async function main(){
-
-let account = await nodemailer.createTestAccount();
-
-  let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: account.user, // generated ethereal user
-      pass: account.pass // generated ethereal password
-    }
-  });
-
-  // setup email data with unicode symbols
-  let mailOptions = {
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
-    to: "bar@example.com, baz@example.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>" // html body
-  };
-
-  // send mail with defined transport object
-  let info = await transporter.sendMail(mailOptions)
-
-  console.log("Message sent: %s", info.messageId);
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-}
-
-main().catch(console.error);
-Examples
-Nodemailer AMQP example is an example of using RabbitMQ to manage Nodemailer email messages. Source.
-Output of the the example script as shown by the Ethereal mail catching service:
-
+var mailOptions = {
+  from: 'paulina.mikey@gmail.com',
+  to: 'paulinadavita@gmail.com',
+  subject: 'Obat Anda',
+  html: 
+  `<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Your Simple Prescription</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+      <script src="main.js"></script>
+      <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+  
+     })();
+  </script>
+  </head>
+  <body>
+      <h1> <center> Resep dan Saran </h1></center>
+  
+      <center>
+      <table>
+          <thead>Obat Yang Disarankan :</thead>
+          <% for (let data of data.Symptoms) {%>
+         <tr>
+  
+              <td><%= data.brandName %></td>
+              <td><%= data.price %></td>
+              <td><%= data.name %></td>
+          </tr>
+          <% } %>
+      </table>
+      </center>
+  </body>
+  </html>`
+};
+transporter.sendMail(mailOptions, (err, info) => {
+  if (err) throw err;
+  console.log('Email sent: ' + info.response);
+});
