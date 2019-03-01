@@ -30,27 +30,34 @@ router.get("/", (req, res) => {
   })
 })
 
+
 router.get('/login', (req, res) => {
   res.render('pages/user/login')
+ 
 })
 .post('/login', (req, res) => {
+  let userFound = null
   User.findOne({
     where: {
       username: req.body.username,
     }
   })
   .then((user) => {
+    console.log(user, '====')
     if (!user) {
       return res.redirect('/login')
-    } 
+    }
+    userFound = user
     bcrypt
     .compare(req.body.password, user.password)
     .then(doMatch => {
       if (doMatch) {
+        req.session.user = user.id
         res.redirect('/check')
-        // res.render('/check', {session :req.session})
+        // console.log(req.session.user)
+        // res.send(req.session)
       } else {
-        res.send('gagal login')
+        res.send('gaaagal login')
       }
     })
     .catch((err) => {

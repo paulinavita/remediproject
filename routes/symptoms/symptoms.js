@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer')
 router.get('/', (req, res) => {
     Model.Symptom.findAll()
     .then(symptomList => {
-        Model.User.findByPk(1)
+        Model.User.findByPk(req.session.user)
         .then((user) => {
             res.render('pages/symptoms', {user:user, symptomList:symptomList})
         })
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 router.get('/showall' , (req, res) => {
     Model.User.findOne( {
-        where : {id : 1},
+        where : {id : req.session.user},
         include : [
             {model : Model.Symptom}
         ]
@@ -34,7 +34,7 @@ router.get('/showall' , (req, res) => {
 router.post('/', (req, res) =>{
     for (let i = 0; i < req.body.symptoms.length; i++) {
         let detail = {
-            UserId : 1,
+            UserId : req.session.id,
             SymptomId : req.body.symptoms[i]
         }        
         Model.UserSymptom.create(detail)
