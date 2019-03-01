@@ -1,0 +1,108 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+
+    <% message %>
+    <div class="">
+        <form method="POST">
+            
+            Nama Gejala / Penyakit : <br>
+            <input type="text" name="name" class="form-control">
+            <br>
+            Deskripsi : <br>
+            <input type="text" name="description" class="form-control">
+            <br>
+            Nama Medikasi : <br>
+            <input type="text" name="drugName" class="form-control">
+            <br>
+            Harga di Pasaran : <br>
+            <input type="text" name="price" class="form-control">
+            <br>
+            Brand / Generik : <br>
+            <input type="text" name="brandName" class="form-control">
+            <br><br>
+            <button type ="submit"> Masukkan Data </button>
+        </form>
+
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../../partials/headPage %>
+  <title></title>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+              <% include ../../partials/header %>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+               
+    <% message %>
+    <div class="">
+        <form method="POST">
+            
+            Nama Gejala / Penyakit : <br>
+            <input type="text" name="name" class="form-control">
+            <br>
+            Deskripsi : <br>
+            <input type="text" name="description" class="form-control">
+            <br>
+            Nama Medikasi : <br>
+            <input type="text" name="drugName" class="form-control">
+            <br>
+            Harga di Pasaran : <br>
+            <input type="text" name="price" class="form-control">
+            <br>
+            Brand / Generik : <br>
+            <input type="text" name="brandName" class="form-control">
+            <br><br>
+            <button type ="submit" class="btn btn-danger"> Masukkan Data </button>
+        </form>
+
+    </div>
+
+            </div>
+            <div class="col-md-2"></div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ banner-->
+
+  <script src="/style/js/jquery.min.js"></script>
+  <script src="/style/js/jquery.easing.min.js"></script>
+  <script src="/style/js/bootstrap.min.js"></script>
+  <script src="/style/js/custom.js"></script>
+
+</body>
+</html>

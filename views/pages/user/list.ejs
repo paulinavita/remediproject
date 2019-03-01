@@ -1,0 +1,111 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <td>Nama Gejala/ Penyakit</td>
+            <td>Deskripsi</td>
+            <td>Nama Obat</td>
+            <td>Harga</td>
+            <td>Nama Brand</td>
+        </thead>
+
+        <tbody>
+            <% for (let data of list) { %>
+                <tr>
+                    <td><%= data.name %></td>
+                    <td><%= data.description %></td>
+                    <td><%= data.drugName %></td>
+                    <td><%= data.price %></td>
+                    <td><%= data.brandName %></td>
+                    <td><a href="/login/edit/<%= data.id %>">Edit</a> | <a href="/login/delete/<%= data.id %>" onclick="return confirm('Are you sure to delete <%= data.name %>?')">Delete</a> </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+    
+</body>
+</html>
+
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../../partials/headPage %>
+  <title></title>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+              <% include ../../partials/header %>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+
+                
+    <table class="table table-bordered table-light">
+            <thead>
+                <th>Nama Gejala/ Penyakit</th>
+                <th>Deskripsi</td>
+                <th>Nama Obat</th>
+                <th>Harga</th>
+                <th>Nama Brand</th>
+            </thead>
+    
+            <tbody>
+                <% for (let data of list) { %>
+                    <tr>
+                        <td><%= data.name %></td>
+                        <td><%= data.description %></td>
+                        <td><%= data.drugName %></td>
+                        <td><%= data.price %></td>
+                        <td><%= data.brandName %></td>
+                        <td><a href="/login/edit/<%= data.id %>">Edit</a> | <a href="/login/delete/<%= data.id %>" onclick="return confirm('Are you sure to delete <%= data.name %>?')">Delete</a> </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        
+
+            </div>
+            <div class="col-md-1"></div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ banner-->
+
+  <script src="/style/js/jquery.min.js"></script>
+  <script src="/style/js/jquery.easing.min.js"></script>
+  <script src="/style/js/bootstrap.min.js"></script>
+  <script src="/style/js/custom.js"></script>
+
+</body>
+</html>
