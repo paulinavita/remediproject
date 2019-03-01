@@ -5,5 +5,14 @@
     "database": "remedi_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "production" : {
+    "username": "stvgxulfqacmsm",
+    "password": "5125d8bf5d353a38fb4bc2488a4cca70209ee294121fb1f79f8066daf1b442bb",
+    "database": "d5kmdirj48ghr0",
+    "host": "ec2-107-20-185-27.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
+
+
